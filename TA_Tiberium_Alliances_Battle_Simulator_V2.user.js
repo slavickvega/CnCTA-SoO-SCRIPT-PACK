@@ -4587,6 +4587,116 @@
                                 translation();
                                 createClasses();
                                 TABS.getInstance();
+// Funciones de Optimización de Formación
+
+// Método Greedy
+function optimizeFormationGreedy() {
+    let units = getPlayerUnits(); // Obtener las unidades ofensivas del jugador
+    let enemyUnits = getEnemyUnits(); // Obtener las unidades defensivas
+    let terrain = getTerrainData(); // Obtener datos del terreno
+
+    // Ordenar unidades ofensivas para maximizar el daño
+    units.sort((a, b) => b.attackPower - a.attackPower);
+
+    // Asignar posiciones basadas en maximización de daño y minimizar pérdidas
+    for (let i = 0; i < units.length; i++) {
+        let bestPosition = findBestPositionGreedy(units[i], enemyUnits, terrain);
+        placeUnit(units[i], bestPosition);
+    }
+    updateBattleSimulator(); // Actualizar el simulador de batalla con la nueva formación
+}
+
+// Función para encontrar la mejor posición usando método Greedy
+function findBestPositionGreedy(unit, enemyUnits, terrain) {
+    let bestPosition = null;
+    let maxDamage = -Infinity;
+
+    for (let position of getPossiblePositions(unit)) {
+        let damage = calculatePotentialDamage(unit, position, enemyUnits, terrain);
+        if (damage > maxDamage) {
+            maxDamage = damage;
+            bestPosition = position;
+        }
+    }
+    return bestPosition;
+}
+
+// Método Exhaustivo
+function optimizeFormationExhaustive() {
+    let units = getPlayerUnits();
+    let enemyUnits = getEnemyUnits();
+    let terrain = getTerrainData();
+
+    let bestFormation = null;
+    let maxDamage = -Infinity;
+
+    let allFormations = generateAllPossibleFormations(units); // Generar todas las posibles formaciones
+
+    // Evaluar cada formación exhaustivamente
+    for (let formation of allFormations) {
+        let damage = calculateTotalDamage(formation, enemyUnits, terrain);
+        if (damage > maxDamage) {
+            maxDamage = damage;
+            bestFormation = formation;
+        }
+    }
+
+    applyFormation(bestFormation); // Aplicar la mejor formación encontrada
+    updateBattleSimulator();
+}
+
+// Función para generar todas las posibles formaciones
+function generateAllPossibleFormations(units) {
+    // Implementar la generación de todas las combinaciones posibles de las unidades
+    // Utilizar técnicas como permutación para considerar todas las posiciones
+    let formations = [];
+    // Código de generación aquí
+    return formations;
+}
+
+// Función de aplicación de formación
+function applyFormation(formation) {
+    // Aplicar la formación específica en el simulador
+    for (let i = 0; i < formation.length; i++) {
+        placeUnit(formation[i].unit, formation[i].position);
+    }
+}
+
+// Función para calcular el daño total de una formación
+function calculateTotalDamage(formation, enemyUnits, terrain) {
+    let totalDamage = 0;
+    for (let i = 0; i < formation.length; i++) {
+        totalDamage += calculatePotentialDamage(formation[i].unit, formation[i].position, enemyUnits, terrain);
+    }
+    return totalDamage;
+}
+
+// Integración de botones en la interfaz del simulador
+function addOptimizationButtons() {
+    let container = document.createElement('div');
+    container.style.position = 'absolute';
+    container.style.bottom = '10px';
+    container.style.right = '10px';
+    container.style.zIndex = '1000';
+
+    let buttonGreedy = document.createElement('button');
+    buttonGreedy.innerHTML = 'Optimización G';
+    buttonGreedy.onclick = optimizeFormationGreedy;
+
+    let buttonExhaustive = document.createElement('button');
+    buttonExhaustive.innerHTML = 'Optimización E';
+    buttonExhaustive.onclick = optimizeFormationExhaustive;
+
+    container.appendChild(buttonGreedy);
+    container.appendChild(buttonExhaustive);
+
+    document.body.appendChild(container);
+}
+
+// Llamada para añadir los botones cuando se carga la interfaz del simulador
+addOptimizationButtons();
+
+                                
                                 console.group("Tiberium Alliances Battle Simulator V2");
                                 console.timeEnd("loaded in");
                                 console.groupEnd();
