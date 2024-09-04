@@ -1,18 +1,4 @@
-// ==UserScript==
-// @name            Tiberium Alliances Battle Simulator V2
-// @description     Allows you to simulate combat before actually attacking.
-// @author          Eistee & TheStriker & VisiG & Lobotommi & XDaast
-// @version         22.12.23
-// @contributor     zbluebugz (https://github.com/zbluebugz) changed cncopt.com code block to cnctaopt.com code block
-// @contributor     NetquiK (https://github.com/netquik) (see first comment for changelog)
-// @namespace       https://cncapp*.alliances.commandandconquer.com/*/index.aspx*
-// @match           https://*.alliances.commandandconquer.com/*/index.aspx*
-// @icon            http://eistee82.github.io/ta_simv2/icon.png
-// @updateURL       https://raw.githubusercontent.com/netquik/CnCTA-SoO-SCRIPT-PACK/master/TA_Tiberium_Alliances_Battle_Simulator_V2.user.js
-// ==/UserScript==
-
 /* 
-codes by NetquiK
 ----------------
 - MovableBox Save Position
 - New Top Bar Button
@@ -155,7 +141,7 @@ codes by NetquiK
                         one: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNi8zMC8xNsrVPP4AAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAEYElEQVQ4jbWVaWxUVRTHf/fN63Q6004X0BYsUsCiUJGA8AFESCoEEpe4IMpiQiQISJBaEFMFxfiBqIkFibIESEnrwpI0UYoYlsgmstWWpbUtrVOmbFNamNLpLJ33rh+4V0f0qyc5ue/Dub/3P/977ntCSomOxgohABfgBJIBE3AAQpVIwALiQBSIAZGhcxIgKoQGK2iKSrdKp4InguMKGAZ69HovXEgpE6FuIBVIPdtI9vafGH++mcJgiDwJDtMglJ1JbeFoqopnUAOEVIZVxvULREM5un03kAZ4SzZTuO80xT0RBmgFhsBKTuJm3MbVGyc9P5fte9ZQqsBaeURbY6pWXYAHSFu+galVJ1hjSxwADgex0flUlMzihz7pRBwGdsV+hnR04VZ7HECS4hiAaKwQYTPB19Rj53ngYDVFGpqcRGfxDN6bO43fla8WIN5+mVoFcta3kl7TjHtmIY2JZ6HVugH3tweZ2BOhv25/yhg2z51GQ4KPcaUqWe1xvbOR+U1tPB/oZN7S6ZxRB2wbSq0HSKnzMUlDM1Jp/nQhh++ZAu2jBbByK+Oa2ngBEBUHWNEVwqtYLgNIPlhNzqHf6NedoLZ/H+rrW3FfvYmp4HENBMSpejL3/spCXd8V4pHFa5mprTUAo3QXryz6nB3dPQzUhQ1+ps1YzY49J8hWQFu1aQDmqm0sCEXIJSGqm5j7ZSUFgNMA7HVLKPN6aLDlX+Zj2ZgD7ufHN56lSam1NXRLFQ/5A0x1GMR0vSGw4xaeymNMB4RjyYukZqUhOoJcP9/CFKkmwuvh0tYVfNjHyx3uXl9bjZYrJwuem8Bef4DI5QCjANI8+DYtY/6kkRx9MJtbhjqQUMlsTj42mDIAh0Hv7Mmsz88lpNpHQU3A7N+X+PCBhFquMUIrdprcGldAYMIIAkDUUKfcA/RsXs72jFQuFAziu6LpXEgAuvh73p2AWbqLR6/eZIwGD83liBYJhLXiMNDt9XD7+vWAXXtJvpY/K/a9UugGvEC6Wj2VR8k7F3j8fZ/PJ6SUSCk5fkEW5T61f5wSGdGjFAFEvyd3Dk9yuqJ2b/BsPHyjuWwfeVfayZr3NPUpTmR1E5lfH2DCyTrm7Ny9KsPn8+H3X7aGPTywOTMjoyspbXBfLVQAJHyIXINfurZSWpGkbn/lsbeWFmfsPsxHlo0HwLZJsWxM3X7fdM58sGjYhgUllWMN0x21orcOtVaN3K+EqrktR1ix25Olio5zH0+0YsHTkVB7jb+10Vd3saa9uOjNKzlZHCkYRNm7rw9ZFu6o3WLbvXeklFLaVjDcfmKYEvnPkFKuVUWtXX98M6o31FYau9OyPhps+Cp6u27jjVOLn2koZ3Tnxc9eta3olbulsbZ4tPOTYEt5v0SouAdcA4wE1jVWiBL+4xflHTTHmzO+7BeEIw1A2rHjQjhshOOQEGK1ZpkJ0DwFBfhZ+RQHerl74wxA3Df2i1kaCiAM5xPqcdu/LPg/4k/+d/H1IH1wmQAAAABJRU5ErkJggg==",
                         two: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNi8zMC8xNsrVPP4AAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAEcElEQVQ4jbWVWWxUVRjHf+fe2+msXSi0iG2hSIlawYg8gBYLDZsQoSiWsCRiDAoSBCuSYDDggyESIxhi1IaSEsYI8lCCLDaACyVBoJQ2IGW6QIdi0ZaltJ3pdGbuPT5wbhmJr37Jl/vynd/5f8v5rpBSYluTXwjACTiAZMAAdECoEAmYQBwYAKJAZOyyBIgyYYMV1KXcrdyh4InguAL2A2H7+yhcSCkToW7AC3gvNJG1p5oXLrVSfD/EKAm6oRHKSqeheAJHykqpB0LK+5XH7QtEYC92+m7AB6RsLKf4p/OUhSPk2Ao0gZmcxO24hTMWJzU/mz2Ht7JdgW3lEbs0hkrVCXgA3/qvmXXkDFstiQ6g60Qn5OPfuIQfM1KJ6BqW/zhP3OnBrc7oQJLiaIBo8ot+I6Gu3tOXePxkHetsaHISd8tK+Wj5bK6qupqAeP91GhTI0Rgktb4V9+JimhJ7Yat1A+7vT/JSOMIIO/0ZEylfPptAQh3jSlWyOuP88BtWNN+kpPMub61dSK1qsKUptR7AdaWNIhua5qV120p+e2QK7DqaAJsqmNx8kwWA8J9gQ0+IFMVyakDyyTqG/3yRx/oS1I7IoLExiLvjNoaCx20gIM41kn70d1ba8T0hnly9g8V2aTVA236ARau+YH9fmJF2YKCd2aVb2H/4DFkKaKk0NcD4eDfvhCJkk2B1zSz/qooCwKEB1pdrqEzxELDkYPExLYycTI69/QrNSq1lQ3cdYUx7J7N0jagdrwmsuImn6jQLAaGveRXvEB/izn3+unSNGVJNRIqHlooNbM5IoZcHz9dSo+UcPgTmFXK0vZPIjU6eA/B5aPv2A1YUPUtNbhb3NNWQ0MalnB0/mkoAXSO2dDo787MJqfRRUAMwRgwl/vRIQtduMc5W7DC4N7mAzsJxdAIDmupyGAiXr2dPmpfLBXnsW7eQywlAJw/n3QEY2w/wTMdtJtrgsdmcskUC/SKwlyQe7Aff6AXBTw1P7jI72Ir1trTsT3lDNU+qSxxVNeR9Usm2ZHfasIMHD1JUNDilWPG+6pZ9vlJ7lCJ5Ja1zdeewMVas9zxYmpSm1tcXdpUfzyua9/z1OpcDWddM+ncnKDx7hWXROGmLlpSg65p5p+tGa3paWo/QkuJCc3iBfgGQsIicgCtn5qn5ujNzfGPgWvakwjkTTQsPgGXhMi0MW93QVGpXzefzTTuvTtUM94AwvAMgL7T+kHFgMIXAXoQZ7Z5uWbEaqSzae93fETj0WXuwqe3KH/Vd586eCTXU13YX5FH55su821DBpFBH9XsywSwrNg0eLg2klDuAtQDSih2Odl/eFTw64WLunNolmuHLRZoaSGFGujraj089lP5UWaYrc0qmtGJdt2pKz49dGq9C6FOAaUKIX4WCbgE2qzuCQBvS1EId1av//GXu3/zHL2r0a7fWGa7hZUirB2QQoY8D7gOjhBDdNrgbSOXfFmzyi3we7FpN+SA4Z+apbNewF48htNwEQSVCiHr+T/sHWt7fucgXQnUAAAAASUVORK5CYII=",
                         three: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNi8zMC8xNsrVPP4AAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAEdElEQVQ4jbWVa2wUZRSGn29mdrvdbbdbaChikQUtGstFkGAgjU2qCIlKRBCDYNJIQIwhYgUExUBMDKhENMaoBMjiVio0AYKAGq7ShluhtCm2bmtra7ElSyl2y17o7sznD77BDTHxlyc5mWRyvmfe854zM0JKiR0tFUIALsAJZAAGoANClUjABFLALWAQSIxdlAZRIWywgmaqdKt0Kng6OKWAcSBmX++GCyllOtQNZAFZF1vI3/kT0xvbKO2P4pegGxrR/FwaSidzqHw+9UBUZVxlyn6ACAWx23cD2YB37VZKf6ylPJZgpK1AE5gZDnpTFq5kipzCAnYe3MgWBbaVJ2xrDNWqC/AA2Su/ZOahM2y0JDqArjM4uZCKtS/x/dAcErqGVXGE+69HcKszOuBQHA0QLRUibqT5mlXTyL3H6lhhQzMc9JXP552yWfyqfDUB8eYLNCiQs7mTnPo23AtKaUmfha3WDbgrj/F4LMEIu/0ZU9haNotQmo8ppSpDnXGt+oolrVd4LtzH4jfmcUEN2NKUWg+Q2dRBiQ31ZdH20TJ+vmsLbB9NgHXbmdZ6hTmAqDjK6kgUr2K5NCDjWB3Dj1/inptpakcMpbm5E3d3L4aCp2wgIM43k3v4LMvs+kiUh17/lAW2tRqgbanixdc+YffNGKPswlAXs+ZvYPfBM+QroKXa1ADjvR28Gk1QQFrUtVL2xT6KAKcGWJ8tJ+D1ELLkHfMxLYyRw/hh6bO0KrWWDd12iAe6wszUNQbtek1gpUw8+2qYBwh9+fNkDclGXO/namM7M6TaCK+H37avZv1QLwPcfn0ttVqu4UNgdjGHu8Ik/ggzCSDbQ8fXb7GkZCLV9+VzQ1MDia5dyLkJYwgA6BrJhU/yeWEBUdU+CmoAxog8Ug+PItrew3hbsdPgxrQiwsXjCQO3NDXlGBDbupKdviwuF43muxXzuJwGdPHPvjsBY0sV47p7mWKDxxZwyhYJxAkFcYSC5PbULBpnDvbXyrRIxrqrQ0Gmh4I8FgoyNRRkWihIyaallGU6CQcCASmllFV7KgdObJsy2xyMnLdS8dN9TZtH2quUyJu0qURojpSVHKgFS5PS1KJxM++DIFMXP01zphNZ10rut0cpPtfEosEUPp/PR01NtWlFLn796BPleUIzTKTVce3iyqvGgy8jQ0ES7XsLdgC7xsztWSfNhENatxzVR/bLPSd5u/I4HgDLItO0MAD8fj89f7Z3TxjrPT0sY/M3Tl/jU5aZOCXN+HElVu1tEGElo3PTrYj8vuuV7tCBD7s6Wzqafqm/dv7cmWhD/YW/ikYTOHuyskr+S1hWcg5qykgp/YAfaGupEFrhwuQpIYxi3ZV/M9ebc0Mz5OFhOU4NHMJMXOve+z4H/JMmL7GSA7VCM0yEkS00RxGAEMYJUF8jKeUGYD3QD3QAE5FWpK/p4/G9l9Yk+I9fVOGC+Cqhu94FGoQQj9xRDASAMmAUMBHolDI1p/fSmh5uf2s1lelgS2VS6K5n1P39/N/xN04bEQuMNx/QAAAAAElFTkSuQmCC",
-                        // SkipVictory Button graphic by Netquik
+                        // SkipVictory Button graphic
                         VictoryPop: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAA3NCSVQICAjb4U/gAAACClBMVEVfBgCuejziQyyPTyZ4LhTXpFTMZjPBlktiFwfgul//JibQcD2haDOHPx7WVjNdCgHPolPowWS6iURwIw71LieYXC3OiEbbtFx+ORnRlEyLRyJmAACocTfYr1rTYTdtGQrvyWnrOCplDgSZZjOyfj/WrVjPdj/UnVF5PBmTVCjht1/TqValbja9kEfdTS/Hn09mCgPLnlDVVjNzJhDtx2dqFAiFPx1tHQuNTCTQazuWXCuGQh9mDwXjvGDz0GzNfkKfbjRmAAC1g0F7MhZjCQLNdD7cr1rbr1l9NhiqdDnYp1Z2KBHEl0yCPRzdTTHQpVSjajTxzGretl1oFAeTUiiMSiJqFgnju2CJRiFsGgq9jUbBkkmbXCyPTiTQi0jJnE5wHAzXsFlmDARiCALsyWjasVvlvmGvfD7VqVftOCp9MRdyJA9nEgbPdD7iuV/atVyPSyS2hEKmbDaRUCZsFgjcUDKEQR50JRDbqVbSp1VmDgXPiEjXplbqw2WpcznZr1i/kEjNoVDHmUybXi70LijdTDFkCQLhuV+vejzTYTjrOirVnVHlu2DVq1bcsVvJnU+7i0VkCgN8MxdsHAqrdTqZXi2jaDLtyWbbsVrdtFx6LhXPpVKLSCLbr1puGAqzgD9mCgRvIA2JQh5mEgbPfkLbsVjZqVZ2KRLzzWpqGQloDQXPdj6nbzZ1JhG/XJyLAAAArnRSTlP///////////////////////////////////8A//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8Kf6MJAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAAZZJREFUKJFjkMYJGAhIMYABQgzCAwnM49Ustgg1W7sKIpMwh8czYFEJSIqhIEPQVjxVWyUrGSRjGpNhEmgiwAvWWLSi1M9Pr7WPJxhk2qT4ai4ukfAQsFRzbSkXEFQ3zALyJk61ZeLiUquE6HKOlwRJyamGJkszZE9YxsXVosW4EOwMpWZORaBUSxpPDkOyRaocUJV2qAtYKnlSfxxIW02hMcPK9PAWLi43J2EGiL9yZLSAfC7XxjJ+idn2QE2ymlVQLydba1sCpZiCrDiUw4Fme0UtZ4AFlPl8d5CJcxk1dNW5uPy0pirBw9DFQpYPKCXG7pAIdIR6NAsDXIpBWAiomssoXx+oW5Gz2QYp5CeKtgM92pJi6wr0uo8HA5IUg3OTGFAbq50il2J4QBhKfAXrpAHdz93NxWVv6JuMIpVs5g80q6uUq2VmXSRaLEem54Hcz6XmH9GGJpUcKysHkupLX4ieNhiyhSqAMp2yzBMxkk1SsbaJgonWlHIGDClpeakAzzWa3gbSmFLSScGmplVt0tik0AAA+3Zy/SYJ5fgAAAAASUVORK5CYII=",
                         VictoryPop2: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAA3NCSVQICAjb4U/gAAACkVBMVEUzAADStraGbkVsHAy2nI3UICD7xcNHIxSyfj9zXDHbyrdZAAD2zsZ7RCCnf3/tx2fzsrJ9VVE+Dw3GeHJ3LyDMZjNmMzPo2cm2SkrArIdJAACNdk3MZjNiEwf16tLUqFbguF9tRz2lGRmZXi3CpqZRMRjz48+NXTHWv7s8CAixn3KnbzaQFRX/Jiajj2TWnpPf0sLIrahmAADLt6SsmHXi1LRkUClEExNXNRmeiWFAAAB2KBHHkYJ3VUSIHx+KQzTt4M2lOCS6jEdaGAqAUCdPJR/5x8TNu51gRiWKYl+YcDvrIyNRAABmDARpPDmihkTm18eJa1eNUz98aDhoEhJeAAB0RETx2crTurjcycDXxr6MSiLjj4+9HBz47dO9mU6KXl49EBA0CQZnMReZZjNsIw9TMB5pEgdmMzNJBAB4LhRKGxmYa1FYDAQ+AAD/w8PPb2/QrZidf0FPLhiCRSDSwqKRelhBBADayb/i0sXx2sqKcDm7pJHz58+RIiJRBADaqFfv0sY8CgN8NCaTVCiLRyJ6TEzs38umhIGqdDnSu7mvmXxfBAA8FgtJCAS2hkPCsolyQUGRUCb779JqFAhVJSRWOBt7Wy1pGAyjajT369NkDwW4nJXv5c72JSXYrVk/DQ2OYWHz0cf4y8RBEBBaBAD16NGBWlQ+EwhOAABeMRdFAADbxr/v38rey8F9MRdFBACtlnrj18ZNAwBWAwB+RSFBCAjJsap3WT6LIxltKBSFPx1mAADv487GpqZUAABBEw/3srJpGAjvyWnj0sKmhoJWMRhNGxtMIhJZJCRmAADTv7r679Xo2sqNeUvTqVZZHAyKYWG6mlE5CghUNCB5MRg+AwDv18aqdT1lEAjgzsIQtHt1AAAA23RSTlP//////////////////////////////////////////////////////////////////wD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8hz8AoAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAAhlJREFUKJFjMMIJGIA4NDQUTXT//lCwVKhm9rWlPUAAk+jJFBLaDJZavXxdYPHW6N3WvhAZ5lU7uIxPHAJKcV++VRs3ITj+PMd6sD5ZC8szZ85IJ/cwGOV5Bpzh4dEXcZyfkg6U2XLCZG1+Pptp8VKGleYRlXE8+fkH7dSdsnqMVibVzFqcn19Va7uaIa8tYs1ctXwgCKou6VkptL29FqhplvicawwrkxK6Kme5AaXYtKY1Td13a9mi/PxFtSwHfBiMQvP81sxdC9JW260YoXE2jo2NbVl370qwv8pduWaxAaXC567riqytAmrSO5YLDY3MtNJwoNTiWZWnQWYfZJq+qwciZdTj7CEJMnHZ2QoHtfyYZn/l2dAwNDLy5TWzAUqt3RuwbNHBEC+QL2BSS1eUgdy/SG7usvx84WCX2bCQN+LWFKwEeZTtTBzQzrXu7JkwKZ8kvog1e0Hurz3jlu8WF2AotBoitXLBvogIjQCgfwpygMZWzY2MiJhqFWrEEGp1EigTERFZGy6hs9P+IJucuAaQG8bAzeAjFgEGGlznlLznxdYV1q4D8xPy4FIdV4pEdXV1WTk3akCkrBhC8/jALM0L/Q1AKdH4Y34g/j5Nbgaj/QuALDEGbt9J8vyH+RU6U8uPAy0XkwK50GrivuN5wBTE3DqzU7sFmEKkFvDxMYSCQ36bphQ4tfmmT5kCTjo+SZo+sIDCCgA7QOw3tEIRUgAAAABJRU5ErkJggg=="
 
@@ -334,22 +320,7 @@ codes by NetquiK
                                 OwnId = ((ownid !== undefined && ownid !== null) ? ownid : ClientLib.Data.MainData.GetInstance().get_Cities().get_CurrentOwnCityId()),
                                 unit, target, /* freePos,*/ transported = [],
                                 i, targetFormation = this.GetFormation(CityId, OwnId)
-                            /*,
-                                                            getFreePos = function (formation) {
-                                                                for (var x = 0; x < ClientLib.Base.Util.get_ArmyMaxSlotCountX(); x++) {
-                                                                    for (var y = 0; y < ClientLib.Base.Util.get_ArmyMaxSlotCountY(); y++) {
-                                                                        if (formation.GetUnitByCoord(x, y) === null) return {
-                                                                            x: x,
-                                                                            y: y
-                                                                        };
-                                                                    }
-                                                                }
-                                                                return null;
-                                                            },
-                                                             freeTransported = function (unit, freePos) {
-                                                                if (unit.get_TransportedCityEntity() !== null) unit = unit.get_TransportedCityEntity();
-                                                                if (unit.get_IsTransportedCityEntity() && freePos !== null) unit.MoveBattleUnit(freePos.x, freePos.y);
-                                                            }*/
+                           
                             ;
                             if (targetFormation !== null) {
                                 for (i = 0; i < formation.length; i++) {
@@ -374,21 +345,7 @@ codes by NetquiK
                                     unit = this.GetUnitById(transported[i].id, CityId, OwnId); //unit being trasported
                                     target = targetFormation.GetUnitByCoord(transported[i].x, transported[i].y); //unit trasporter
                                     if (target !== null && target.get_Enabled()) unit.set_Enabled(true);
-                                    /*freePos = getFreePos(targetFormation); //find free spaces
-                                    if (freePos !== null && target !== null) freeTransported(target, freePos); //if trasporter and free space
-                                    freePos = getFreePos(targetFormation); //find other free spaces
-                                    if (freePos !== null) freeTransported(unit, freePos); // if other spaces so from function if trasported is also trasporter so unit = second unit trasported and if second unit trasported move it free
-                                    target = targetFormation.GetUnitByCoord(transported[i].x, transported[i].y); // trasporter = xy original
-                                    if (target !== null) target.set_Enabled(true); if xy exist xy enabled
-                                    unit.set_Enabled(true); unit being trasported enabled 
-                                    unit.MoveBattleUnit(transported[i].x, transported[i].y); unit being trasported move to xy
-                                    
-                                    
-                                    if (target !== null) target.set_Enabled(transported[i].enabled); // if trasporter exist toggle enable with trasported state
-                                    else unit.set_Enabled(transported[i].enabled); // if not exist unit being trasported toggle enable with trasported state
-                                    if (target !== null) target.MoveBattleUnit(transported[i].x, transported[i].y); // if trasporter exist move to xy original
-                                
-                              */
+
                                 }
                             }
                         },
@@ -487,7 +444,7 @@ codes by NetquiK
                             return formation;
                         },
 
-                        // Mooded by Netquik
+
 
                         toggle_Enabled: function (formation, EUnitGroup) {
                             var all = (EUnitGroup != ClientLib.Data.EUnitGroup.Infantry && EUnitGroup != ClientLib.Data.EUnitGroup.Vehicle && EUnitGroup != ClientLib.Data.EUnitGroup.Aircraft);
@@ -836,13 +793,7 @@ codes by NetquiK
                         },
                         patchGetUnitRepairCosts: function () {
                             try {
-                                /*  for (var i in ClientLib.Data.Cities.prototype) {
-                                     if (typeof ClientLib.Data.Cities.prototype[i] === "function" && ClientLib.Data.Cities.prototype[i] == ClientLib.Data.Cities.prototype.get_CurrentCity && i !== "get_CurrentCity") break;
-                                 }
-                                 var GetOwnUnitRepairCosts = ClientLib.API.Util.GetUnitRepairCosts.toString().replace(i, "get_CurrentOwnCity"),
-                                     args = GetOwnUnitRepairCosts.substring(GetOwnUnitRepairCosts.indexOf("(") + 1, GetOwnUnitRepairCosts.indexOf(")")),
-                                     body = GetOwnUnitRepairCosts.substring(GetOwnUnitRepairCosts.indexOf("{") + 1, GetOwnUnitRepairCosts.lastIndexOf("}")); /*jslint evil: true */
-                                //ClientLib.API.Util.GetOwnUnitRepairCosts = Evil(args, body); /*jslint evil: false */ 
+
                                 //MOD NOEVIL 1
                                 ClientLib.API.Util.GetOwnGetUnitRepairCosts = function (a, b, c) {
                                     var $createHelper;
@@ -2424,11 +2375,7 @@ codes by NetquiK
                         },
                         patchSetEnabled: function () {
                             try {
-                                /*  var set_Enabled = ClientLib.Data.CityPreArmyUnit.prototype.set_Enabled.toString(),
-                                     args = set_Enabled.substring(set_Enabled.indexOf("(") + 1, set_Enabled.indexOf(")")),
-                                     body = set_Enabled.substring(set_Enabled.indexOf("{") + 1, set_Enabled.lastIndexOf("}"));
-                                 body = body + "TABS.PreArmyUnits.getInstance().__CityPreArmyUnitsChanged();"; 
-                                 ClientLib.Data.CityPreArmyUnit.prototype.set_Enabled = Evil(args, body);  */
+
                                 //MOD NO EVIL 2
                                 ClientLib.Data.CityPreArmyUnit.prototype.set_Enabled_Original = ClientLib.Data.CityPreArmyUnit.prototype.set_Enabled;
                                 ClientLib.Data.CityPreArmyUnit.prototype.set_Enabled = function (a) {
